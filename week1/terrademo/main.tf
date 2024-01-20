@@ -8,15 +8,14 @@ terraform {
 }
 
 provider "google" {
-  # Configuration options
-  credentials = "./key/my-creds.json"
-  project     = "pivotal-bonbon-411719"
-  region      = "europe-southwest1-a"
+  credentials = file(var.credentials)
+  project     = var.project
+  region      = var.region
 }
 
 resource "google_storage_bucket" "demo-bucket" {
-  name          = "pivotal-bonbon-411719-terra-bucket"
-  location      = "EU"
+  name          = var.gcs_bucket
+  location      = var.location
   force_destroy = true
 
   lifecycle_rule {
@@ -27,4 +26,9 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "AbortIncompleteMultipartUpload"
     }
   }
+}
+
+resource "google_bigquery_dataset" "demo_dataset" {
+  dataset_id = var.bq_dataset_name
+  location   = var.location
 }

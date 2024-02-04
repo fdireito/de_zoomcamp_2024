@@ -1,0 +1,3 @@
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "fabled_warrior"}, "timestamp": 1706889362, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "cheerful_ancient"}, "timestamp": 1706891228, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "elemental_core"}, "timestamp": 1706894333, "user": null}

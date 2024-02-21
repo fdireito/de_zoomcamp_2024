@@ -2,6 +2,8 @@
 !taxi_zone_lookup.csv
 ./week1/docker/data
 *.json
+*.gz
+*parquet
 
 
 # Local .terraform directories

@@ -1,5 +1,44 @@
 export SPARK_HOME="${HOME}/spark/spark-3.3.2-bin-hadoop3"
 
+export PATH="${SPARK_HOME}/bin:${PATH}"
+
 export PYTHONPATH="${SPARK_HOME}/python/:$PYTHONPATH"
 
 export PYTHONPATH="${SPARK_HOME}/python/lib/py4j-0.10.9.5-src.zip:$PYTHONPATH"
+
+
+
+--------------------
+
+URL="spark://forg:7077"
+
+spark-submit \
+    --master="${URL}" \
+    06_spark_sql.py \
+        --input_green=data/pq/green/2020/*/ \
+        --input_yellow=data/pq/yellow/2021/*/ \
+        --output=data/report-2020
+
+--input_green=gs://nytaxi_week_5/pq/green/2020/*/ \
+--input_yellow=gs://nytaxi_week_5/pq/yellow/2021/*/ \
+--output=gs://nytaxi_week_5/report-2020
+
+gcloud dataproc jobs submit pyspark \
+    --cluster=de-zoomcamp-cluster \
+    --region=us-central1 \
+    gs://nytaxi_week_5/code/06_spark_sql.py \
+    -- \
+    --input_green=gs://nytaxi_week_5/pq/green/2020/*/ \
+    --input_yellow=gs://nytaxi_week_5/pq/yellow/2021/*/ \
+    --output=gs://nytaxi_week_5/report-2020
+
+
+gcloud dataproc jobs submit pyspark \
+    --cluster=de-zoomcamp-cluster \
+    --region=us-central1 \
+    --jars=gs://spark-lib/bigquery/spark-bigquery-latest_2.12.jar \
+    gs://nytaxi_week_5/code/06_spark_sql_big_query.py \
+    -- \
+    --input_green=gs://nytaxi_week_5/pq/green/2020/*/ \
+    --input_yellow=gs://nytaxi_week_5/pq/yellow/2020/*/ \
+    --output=pivotal-bonbon-411719.week5.reports-2020

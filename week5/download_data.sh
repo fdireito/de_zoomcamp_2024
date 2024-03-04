@@ -7,7 +7,7 @@ YEAR=$2 #2020
 
 URL_PREFIX="https://github.com/DataTalksClub/nyc-tlc-data/releases/download"
 
-for MONTH in {1..12}; do
+MONTH=10
     FMONTH=`printf "%02d" ${MONTH}`
 
     URL="${URL_PREFIX}/${TAXI_TYPE}/${TAXI_TYPE}_tripdata_${YEAR}-${FMONTH}.csv.gz"

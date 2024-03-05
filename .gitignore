@@ -5,6 +5,18 @@
 *.gz
 *parquet
 
+./week6/.gradle
+./week6/bin
+./week6/!src/main/resources/rides.csv
+./week6/
+./week6/build/classes
+./week6/build/generated
+./week6/build/libs
+./week6/build/reports
+./week6/build/resources
+./week6/build/test-results
+./week6/build/tmp
+
 ./week6/kafka_examples/src/main/java/org/example/Secrets.java
 
 # Local .terraform directories
